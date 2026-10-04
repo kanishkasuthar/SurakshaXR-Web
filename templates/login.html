@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Suraksha-XR — Administrator & Supervisor Login Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="login-page-body">
+
+  <!-- Top Dark Forest Green Header Ribbon -->
+  <nav class="top-nav-ribbon" style="justify-content:space-between;padding:0 28px;">
+    <div style="font-size:12px;font-family:var(--font-mono);color:var(--text-sage);letter-spacing:1px;display:flex;align-items:center;gap:8px;">
+      <span style="color:var(--score-green);">●</span> SURAKSHA-XR ENTERPRISE SAFETY GATEWAY • SUPERVISORY LEVEL ACCESS
+    </div>
+    <button id="themeToggleBtn" class="pill-outline-btn" style="border-color:rgba(255,255,255,0.2);color:#FFFFFF;" title="Toggle Dark/Light Mode">
+      <span id="themeToggleIcon">🌙</span>
+      <span id="themeToggleText">Dark Theme</span>
+    </button>
+  </nav>
+
+  <!-- Login Card Centered Container -->
+  <main class="login-container">
+    <div class="login-card">
+      
+      <!-- Brand Header -->
+      <div class="login-brand-block">
+        <div class="brand-logo-squircle" style="width:52px;height:52px;margin:0 auto 14px;">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#D4A359" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <circle cx="12" cy="11" r="2.8" fill="#D4A359" stroke="none"/>
+          </svg>
+        </div>
+        <div class="brand-title" style="font-size:24px;margin-bottom:4px;">
+          <span class="brand-name">Suraksha</span><span class="brand-suffix">XR</span>
+        </div>
+        <div class="meta-section-tag" style="color:var(--text-muted);letter-spacing:1.5px;font-size:11px;">
+          SUPERVISOR & ADMIN COMMAND PORTAL
+        </div>
+      </div>
+
+      <!-- Tag & Heading -->
+      <div class="login-meta-header">
+        <div class="session-label">
+          <span class="dot-indicator"></span>
+          <span>RESTRICTED ACCESS</span>
+        </div>
+        <span class="badge-ready">ROLE: ADMIN</span>
+      </div>
+
+      <h1 class="login-title">Administrator Sign In</h1>
+      <p class="login-desc">Sign in with authorized supervisory credentials to manage workforce drills, review canonical safety telemetry, and issue certified digital passports.</p>
+
+      <!-- Alert Message Box -->
+      <div id="loginAlert" class="login-alert-box hidden"></div>
+
+      <!-- Login Form -->
+      <form id="adminLoginForm" class="login-form">
+        <div class="control-group" style="margin-bottom:16px;">
+          <label class="control-label" for="usernameInput">ADMIN USERNAME / ID</label>
+          <div class="input-with-icon">
+            <span class="input-icon">👤</span>
+            <input id="usernameInput" class="custom-input login-input" type="text" placeholder="e.g. admin" value="admin" required autocomplete="username">
+          </div>
+        </div>
+
+        <div class="control-group" style="margin-bottom:20px;">
+          <label class="control-label" for="passwordInput">SECURITY KEY / PASSWORD</label>
+          <div class="input-with-icon">
+            <span class="input-icon">🔑</span>
+            <input id="passwordInput" class="custom-input login-input" type="password" placeholder="e.g. admin123" value="admin123" required autocomplete="current-password">
+            <button type="button" id="togglePasswordBtn" class="password-toggle-btn" title="Show/Hide Password">👁️</button>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" id="submitLoginBtn" class="btn-start-session" style="font-size:15px;padding:14px;border-radius:12px;">
+          <span>SECURE ADMIN LOGIN</span>
+          <span style="font-size:16px;">➔</span>
+        </button>
+      </form>
+
+      <!-- Security Footer Badge -->
+      <div class="login-footer-meta">
+        <div id="backendStatusPill" class="live-connection-pill" style="font-size:11px;padding:4px 10px;">
+          <span class="pulse-dot"></span>
+          <span id="backendStatusText">Live connection</span>
+        </div>
+        <span style="font-size:11px;font-family:var(--font-mono);color:var(--text-muted);">FastAPI Gateway • JWT Auth</span>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="/login.js"></script>
+</body>
+</html>

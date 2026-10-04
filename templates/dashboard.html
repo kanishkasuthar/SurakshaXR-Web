@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Suraksha-XR — Supervisor Training Studio & Command Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+  <!-- Top Dark Forest Green Navigation Ribbon -->
+  <nav class="top-nav-ribbon">
+    <div class="nav-tabs-center">
+      <button class="nav-tab" data-tab="overview">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="7" height="7" rx="1.5"/>
+          <rect x="14" y="3" width="7" height="7" rx="1.5"/>
+          <rect x="3" y="14" width="7" height="7" rx="1.5"/>
+          <rect x="14" y="14" width="7" height="7" rx="1.5"/>
+        </svg>
+        <span>Command overview</span>
+      </button>
+      <button class="nav-tab" data-tab="workers">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+        <span>Worker roster</span>
+      </button>
+      <button class="nav-tab active" data-tab="training">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="12 6 12 12 16 14"/>
+        </svg>
+        <span>Training studio</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Sub-Header Brand & Telemetry Bar -->
+  <header class="studio-header">
+    <div class="header-inner">
+      <div class="brand-group">
+        <div class="brand-logo-squircle">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#D4A359" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <circle cx="12" cy="11" r="2.8" fill="#D4A359" stroke="none"/>
+          </svg>
+        </div>
+        <div class="brand-title">
+          <span class="brand-name">Suraksha</span><span class="brand-suffix">XR</span>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <div id="backendStatusPill" class="live-connection-pill">
+          <span class="pulse-dot"></span>
+          <span id="backendStatusText">Live connection</span>
+        </div>
+        <div id="userProfileBadge" class="user-profile-badge">
+          <span>👤</span>
+          <span id="adminUsernameBadge">Admin: Safety Supervisor</span>
+        </div>
+        <button id="themeToggleBtn" class="pill-outline-btn" title="Toggle Dark/Light Mode">
+          <span id="themeToggleIcon">🌙</span>
+          <span id="themeToggleText">Dark Theme</span>
+        </button>
+        <button id="logoutBtn" class="logout-link-btn" title="Sign out of Admin Portal">
+          <span>🚪</span>
+          <span>Logout</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-container">
+
+    <!-- ========================================== -->
+    <!-- TAB 1: TRAINING STUDIO (DEFAULT VIEW)     -->
+    <!-- ========================================== -->
+    <div id="tab-training" class="tab-content active">
+      
+      <!-- Studio Header Titles -->
+      <section class="studio-title-section">
+        <div class="meta-row">
+          <span class="meta-breadcrumb">PRACTICE / SCENARIOS</span>
+          <span class="meta-live-indicator">
+            <span class="broadcast-icon">((•))</span> LIVE SIMULATOR
+          </span>
+        </div>
+        <h1 class="page-title">Training studio</h1>
+        <p class="page-subtitle">Review the API's available modules, then run a live event-scored practice session.</p>
+      </section>
+
+      <!-- Section: Set up a practice run -->
+      <section class="card setup-card">
+        <div class="card-top-meta">
+          <div class="session-label">
+            <span class="dot-indicator"></span>
+            <span>SESSION SIMULATOR</span>
+          </div>
+          <span class="badge-ready">READY</span>
+        </div>
+
+        <h2 class="card-heading">Set up a practice run</h2>
+
+        <!-- Dropdowns Form -->
+        <div class="practice-controls-grid">
+          <div class="control-group">
+            <label class="control-label" for="workerSelect">WORKER</label>
+            <div class="select-wrapper">
+              <select id="workerSelect" class="custom-select">
+                <option value="W003">Aman Das • W003</option>
+                <option value="W001">Rahul Kumar • W001</option>
+                <option value="W002">Priya Sharma • W002</option>
+              </select>
+              <span class="select-arrow">▼</span>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="scenarioSelect">SCENARIO</label>
+            <div class="select-wrapper">
+              <select id="scenarioSelect" class="custom-select">
+                <option value="FIRE_01">Fire Safety</option>
+                <option value="GAS_01">Gas Safety</option>
+                <option value="PPE_01">PPE Training</option>
+              </select>
+              <span class="select-arrow">▼</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dark Forest Green Training Banner -->
+        <div class="training-hero-card" id="trainingHeroCard">
+          <div class="hero-top-row">
+            <span class="hero-meta-tag">TRAINING / EVENT INGEST</span>
+            <span class="hero-module-code" id="heroModuleCode">FIRE_01</span>
+          </div>
+
+          <!-- Concentric Ring Emblem -->
+          <div class="hero-emblem-container">
+            <div class="ring-outer"></div>
+            <div class="ring-middle"></div>
+            <div class="ring-inner">
+              <div class="satellite-icon sat-top" id="satIconTop">🔥</div>
+              <div class="satellite-icon sat-right" id="satIconRight">🛡️</div>
+              <div class="satellite-icon sat-bottom" id="satIconBottom">⛑️</div>
+              <div class="central-core-badge" id="centralCoreBadge">
+                <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="#D4A359" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                  <circle cx="12" cy="12" r="5"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-text-block">
+            <h3 class="hero-title" id="heroTitle">Fire Safety</h3>
+            <p class="hero-desc" id="heroDesc">Extinguisher use, alarm and safe exit</p>
+          </div>
+
+          <!-- Start Session Button -->
+          <button id="startSessionBtn" class="btn-start-session">
+            <span class="broadcast-symbol">((•))</span>
+            <span>Start training session ➔</span>
+          </button>
+
+          <!-- Interactive Live Session Progress Strip -->
+          <div id="liveSessionConsole" class="live-session-console hidden">
+            <div class="console-header">
+              <span id="sessionStatusText">Ingesting simulation events to backend...</span>
+              <span id="sessionScoreText" class="console-score">Score: 100%</span>
+            </div>
+            <div class="console-progress-track">
+              <div id="sessionProgressBar" class="console-progress-fill" style="width: 0%"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Module catalog -->
+      <section class="card catalog-card">
+        <div class="catalog-header">
+          <div>
+            <div class="meta-section-tag">AVAILABLE FROM API</div>
+            <h2 class="card-heading">Module catalog</h2>
+          </div>
+          <div class="badge-count" id="moduleCountBadge">3 MODULES</div>
+        </div>
+
+        <div id="moduleCatalogList" class="catalog-list">
+          <!-- Dynamically populated or fallback -->
+          <div class="catalog-item active" data-mod="FIRE_01" onclick="selectScenarioFromCatalog('FIRE_01')">
+            <div class="item-number-badge num-green">01</div>
+            <div class="item-body">
+              <h4 class="item-title">Fire Safety</h4>
+              <div class="item-sub">Fire • Beginner</div>
+              <div class="item-desc">Extinguisher use, alarm and safe exit</div>
+            </div>
+            <div class="item-chevron">›</div>
+          </div>
+
+          <div class="catalog-item" data-mod="GAS_01" onclick="selectScenarioFromCatalog('GAS_01')">
+            <div class="item-number-badge num-sand">02</div>
+            <div class="item-body">
+              <h4 class="item-title">Gas Safety</h4>
+              <div class="item-sub">Gas • Beginner</div>
+              <div class="item-desc">Detect leaks and follow safe shutdown procedure</div>
+            </div>
+            <div class="item-chevron">›</div>
+          </div>
+
+          <div class="catalog-item" data-mod="PPE_01" onclick="selectScenarioFromCatalog('PPE_01')">
+            <div class="item-number-badge num-blue">03</div>
+            <div class="item-body">
+              <h4 class="item-title">PPE Training</h4>
+              <div class="item-sub">PPE • Level 1</div>
+              <div class="item-desc">Select and use the required protective equipment</div>
+            </div>
+            <div class="item-chevron">›</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Recent Evidence (Live Event Stream) -->
+      <section class="card evidence-card">
+        <div class="evidence-header">
+          <div class="meta-section-tag">RECENT EVIDENCE</div>
+          <div class="meta-section-tag">LATEST COMPLETIONS</div>
+        </div>
+
+        <div id="evidenceList" class="evidence-list">
+          <div class="evidence-item">
+            <div class="check-box-icon">✓</div>
+            <div class="evidence-content">
+              <div class="evidence-worker">Worker SESSION_ISOLATION_WORKER</div>
+              <div class="evidence-sub">TRAINING STARTED • FIRE_01</div>
+            </div>
+            <div class="evidence-time">Sep 30, 12:03 AM</div>
+          </div>
+        </div>
+
+        <div class="evidence-footer">
+          <span id="eventsCountText" class="footer-meta-tag">8 EVENTS IN VIEW</span>
+          <span class="footer-meta-tag">Updates every 12 seconds</span>
+        </div>
+      </section>
+
+      <!-- Section: Recent training results Table -->
+      <section class="card results-table-card">
+        <div class="results-card-header">
+          <div>
+            <div class="meta-section-tag">API COMPLETIONS</div>
+            <h2 class="card-heading">Recent training results</h2>
+          </div>
+          <button id="refreshBtn" class="refresh-pill-btn">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M23 4v6h-6M1 20v-6h6"/>
+              <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+            </svg>
+            <span>Refresh</span>
+          </button>
+        </div>
+
+        <div class="table-responsive">
+          <table class="editorial-table">
+            <thead>
+              <tr>
+                <th>WORKER</th>
+                <th>SCENARIO</th>
+                <th>SCORE</th>
+                <th>MISTAKES</th>
+                <th>WEAK AREA</th>
+                <th>COMPLETED</th>
+              </tr>
+            </thead>
+            <tbody id="resultsTableBody">
+              <tr><td colspan="6" style="text-align:center;padding:24px;">Loading training results...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB 2: COMMAND OVERVIEW                   -->
+    <!-- ========================================== -->
+    <div id="tab-overview" class="tab-content">
+      <section class="studio-title-section">
+        <div class="meta-row">
+          <span class="meta-breadcrumb">EXECUTIVE METRICS / DASHBOARD</span>
+          <span class="meta-live-indicator">● OPERATIONAL</span>
+        </div>
+        <h1 class="page-title">Command overview</h1>
+        <p class="page-subtitle">Workforce safety drill compliance, real-time analytics, and incident prevention metrics.</p>
+      </section>
+
+      <!-- Metric KPI Grid -->
+      <div class="stats-overview-grid" id="statsGrid">
+        <div class="stat-card"><div class="stat-label">Loading KPIs...</div></div>
+      </div>
+
+      <!-- Analytics Breakdown Cards -->
+      <div class="overview-analytics-grid">
+        <div class="card">
+          <div class="card-top-meta">
+            <div class="meta-section-tag">CURRICULUM PROFICIENCY</div>
+            <span class="badge-ready">AVERAGES</span>
+          </div>
+          <h2 class="card-heading">Module Performance Breakdown</h2>
+          <div id="moduleAnalytics" class="module-bars-container"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-top-meta">
+            <div class="meta-section-tag">AUTOMATED AI COACH</div>
+            <span class="badge-ready">ACTIVE</span>
+          </div>
+          <h2 class="card-heading">AI Safety Coach Insights</h2>
+          <div id="recsContainer" class="recs-editorial-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB 3: WORKER ROSTER                      -->
+    <!-- ========================================== -->
+    <div id="tab-workers" class="tab-content">
+      <section class="studio-title-section">
+        <div class="meta-row">
+          <span class="meta-breadcrumb">WORKFORCE / DIRECTORY</span>
+          <span class="meta-live-indicator">● PASSPORT REPOSITORY</span>
+        </div>
+        <h1 class="page-title">Worker roster</h1>
+        <p class="page-subtitle">Track industrial trainee certifications, inspect safety passports, and verify QR digital credentials.</p>
+      </section>
+
+      <div class="card">
+        <div class="roster-toolbar">
+          <div class="search-input-wrapper">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <input id="workerSearch" class="roster-search" placeholder="Search by trainee name or ID (e.g. W001)...">
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="editorial-table">
+            <thead>
+              <tr>
+                <th>WORKER</th>
+                <th>FIRE DRILL</th>
+                <th>GAS SAFETY</th>
+                <th>PPE DRILL</th>
+                <th>OVERALL SCORE</th>
+                <th>STATUS</th>
+                <th>OFFICIAL CREDENTIAL</th>
+              </tr>
+            </thead>
+            <tbody id="workersTableBody">
+              <tr><td colspan="7" style="text-align:center;padding:24px;">Loading workers data...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Credential Verification Card -->
+      <div class="card" style="margin-top:24px;">
+        <div class="card-top-meta">
+          <div class="meta-section-tag">VERIFICATION GATEWAY</div>
+          <span class="badge-ready">CRYPTOGRAPHIC CHECK</span>
+        </div>
+        <h2 class="card-heading">Verify Safety Passport Token</h2>
+        <p class="page-subtitle" style="margin-bottom:16px;">Verify a Suraksha-XR digital safety passport certificate token directly against the backend database.</p>
+        <div class="verify-inline-form">
+          <input id="verifyInput" class="custom-input" placeholder="e.g. SURAKSHA-W001-2026" value="SURAKSHA-W001-2026">
+          <button id="verifyBtn" class="btn-start-session" style="width:auto;padding:12px 24px;">Verify Token</button>
+        </div>
+        <div id="verifyResult" class="verify-result-box hidden"></div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Certificate View Modal -->
+  <div id="modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <button class="modal-close-btn" onclick="closeModal()">×</button>
+      <div id="certificateContainer"></div>
+    </div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
